@@ -1,16 +1,16 @@
 <template>
     <div class="card">
         <div class="card__bottom">
-            <div>
+            <div class="card__bottom__main">
                 <div class="caption">
                     <span>Название серии</span>
                 </div>
                 <h5>Базовые навыки профессиональных телефонных звонков</h5>
                 <h5>21 000 ₽</h5>
             </div>
-
             <button class="about">
                 Подробнее
+                <img src="../assets/Vector60.png"/>
             </button>
         </div>
     </div>
@@ -29,7 +29,7 @@
 }
 
 .card {
-    width: 272px;
+    width: 368.67px;
     height: 400px;
     border-radius: 4px;
     background: url(../assets/photo.png);
@@ -42,56 +42,71 @@
     align-items: flex-start;
     padding: 0px;
     gap: 12px;
+    
 
     &__bottom {
         display: flex;
+        position: relative;
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-start;
         padding: 56px 30px 25px;
         gap: 12px;
         // border: 1px solid black;
-        // width: 272px;
+        
         flex: 0;
         background: linear-gradient(0deg, #4C5A79 0%, rgba(76, 90, 121, 0) 100%);
         text-align: left;
-        transition: flex 300ms ease-out, background-color 300ms ease-out;
-
-        .caption {
+        transition: flex 300ms ease-out, background 300ms linear;
+        border-radius: 4px;
+        &__main {
+            
             display: flex;
-            align-items: center;
-            padding: 2px 10px 0px;
-            font-weight: 500;
-            font-size: 15px;
-            line-height: 19px;
-            color: #FFFFFF;
-            background-color: #0066B3;
-            border-radius: 2px;
-        }
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: flex-start;
+            gap: 12px;
+            text-align: left;
+             transition: margin-bottom 300ms ease-out ;
 
-        h5 {
-            font-style: normal;
-            font-weight: 800;
-            font-size: 18px;
-            line-height: 25px;
-            text-transform: uppercase;
-            color: #FFFFFF;
+             .caption {
+                display: flex;
+                align-items: center;
+                padding: 2px 10px 0px;
+                font-weight: 500;
+                font-size: 15px;
+                line-height: 19px;
+                color: #FFFFFF;
+                background-color: #0066B3;
+                border-radius: 2px;
+            }
+
+            h5 {
+                font-style: normal;
+                font-weight: 800;
+                font-size: 18px;
+                line-height: 25px;
+                text-transform: uppercase;
+                color: #FFFFFF;
 
 
+            }
         }
 
         .about {
             font-family: Houschka Pro;
+            position:absolute;
             font-weight: 700;
             font-size: 18px;
             line-height: 28px;
             /* identical to box height, or 156% */
             background-color: transparent;
             border: 0;
-            visibility: collapse;
             /* white */
-
+            transform: translateY(50px);
             color: #FFFFFF;
+            transition: transform 400ms ease-in;
+            visibility: hidden;
         }
 
     }
@@ -103,10 +118,13 @@
     flex: 1;
     background: linear-gradient(0deg, #4C5A79 0%, rgba(76, 90, 121, 0.75) 100%);
 }
-
-.card:hover .card__bottom {
-    flex: 1;
-    background: linear-gradient(0deg, #4C5A79 0%, rgba(76, 90, 121, 0.75) 100%);
+.card:hover .about{
+    transform: translateY(10px);
+    visibility: visible;
+}
+.card:hover .card__bottom__main {
+    margin-bottom: 20px;
+    
 }
 
 .card:active {
