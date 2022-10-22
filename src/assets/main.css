@@ -1,0 +1,15 @@
+@font-face {
+    font-family: "Houschka Pro";
+    src: url('./fonts/Houschka\ Pro/HouschkaPro-Medium.ttf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: "Houschka Pro";
+    src: url('./fonts/Houschka\ Pro/HouschkaPro-Bold.ttf');
+    font-weight: 700;
+}
+@font-face {
+    font-family: "Houschka Pro";
+    src: url('./fonts/Houschka\ Pro/HouschkaPro-ExtraBold.ttf');
+    font-weight: 800;
+}
