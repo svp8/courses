@@ -13,3 +13,12 @@
     src: url('./fonts/Houschka\ Pro/HouschkaPro-ExtraBold.ttf');
     font-weight: 800;
 }
+.text{
+    font-family: 'Houschka Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 28px;
+    /* identical to box height, or 156% */
+    color: #000000;
+}

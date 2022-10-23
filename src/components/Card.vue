@@ -1,12 +1,12 @@
 <template>
-    <div class="card">
+    <div class="card" :style="image">
         <div class="card__bottom">
             <div class="card__bottom__main">
                 <div class="caption">
-                    <span>Название серии</span>
+                    <span>{{info.series}}</span>
                 </div>
-                <h5>Базовые навыки профессиональных телефонных звонков</h5>
-                <h5>21 000 ₽</h5>
+                <h5>{{info.title}}</h5>
+                <h5>{{info.cost +" "+ info.cost_currency}}</h5>
             </div>
             <button class="about">
                 Подробнее
@@ -16,6 +16,29 @@
     </div>
 
 </template>
+
+<script>
+import { onBeforeMount, ref } from 'vue'
+export default{
+    props:['info'],
+    setup(props){
+        const data=ref([]);
+        let path=require('@/assets/'+props.info.preview_img_path);
+        console.log(path);
+        // const image= { background:`url(${'@/assets/'+props.info.preview_img_path})`}   ;
+        const image= { background:`url(${path})`,
+    "background-size": "cover",
+    "background-position": "top",
+    "border-radius": "4px",}   ;
+
+        return {
+            data,
+            image
+        }
+    }
+}
+</script>
+
 <style lang="scss">
 .anim {
     transition: 0.5s;
@@ -33,11 +56,12 @@
     height: 400px;
     position :relative;
     border-radius: 4px;
-    background: url(../assets/photo.png);
+    background: url(../assets/logo.png);
     background-size: cover;
     background-position: top;
     border-radius: 4px;
     padding: 0px;
+    overflow: hidden;
     &__bottom {
         display: flex;
         position: absolute;
@@ -48,6 +72,7 @@
         padding: 0px 30px 25px 30px;
         gap: 12px;
         height:199px;
+        width:100%;
         // border: 1px solid black;
         // overflow: hidden;
         background: linear-gradient(0deg, #4C5A79 0%, rgba(76, 90, 121, 0) 100%);
