@@ -23,22 +23,25 @@ top: 14px;
     border-radius: 4px;
     height: 58px;
     position: relative;
-    &-icon{
-        position:absolute;
+
+    &-icon {
+        position: absolute;
         right: 40px;
-        top:21px
+        top: 21px
     }
+
     input {
         background: inherit;
-        border:0;
+        border: 0;
         height: inherit;
         flex: 1;
         border-radius: inherit;
         transition: background 300ms ease-out;
-        &:hover{
+
+        &:hover {
             background: #E2E8F3;
         }
-        
+
     }
 }
 </style>
