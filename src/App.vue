@@ -8,14 +8,14 @@
         <span style="color:#4C5A79" class="caption">{{dataFiltered.length}} результатов</span>
         <ul class="middle__right">
           <li><span style="color:#9DB0BF" class="caption">Сортировать по:</span></li>
-          <li class="sort">
-            <span @click="sort(0)" :class="{'sort__name-active':sortParams[0].active}"
+          <li @click="sort(0)" class="sort">
+            <span  :class="{'sort__name-active':sortParams[0].active}"
               class="sort__name caption">Цене</span>
             <img v-if="sortParams[0].active" :class="{'sort__img-up':sortParams[0].direction}"
               src="./assets/arrow-up.png" />
           </li>
-          <li>
-            <span @click="sort(1)" :class="{'sort__name-active':sortParams[1].active}"
+          <li @click="sort(1)">
+            <span  :class="{'sort__name-active':sortParams[1].active}"
               class="sort__name caption">Алфавиту</span>
             <img v-if="sortParams[1].active" :class="{'sort__img-up':sortParams[1].direction}"
               src="./assets/arrow-up.png" />
@@ -23,7 +23,7 @@
         </ul>
       </div>
       <div class="cards">
-        <Card v-for="card in dataFiltered" :key="card.id" :info="card" />
+        <Card v-for="card in page" :key="card.id" :info="card" />
       </div>
     </div>
     <button @click="changePage(2)">
@@ -52,7 +52,8 @@ export default {
   setup() {
 
     onBeforeMount(() => {
-      currentPage.value = 1;
+      currentPage.value = localStorage.getItem('currentPage')!==null?localStorage.getItem('currentPage'):1;
+      // sortParams = [{ active: false, direction: true }, { active: false, direction: true }];
       currentPageSize.value = 9;
       data.value = mock;
       dataFiltered.value = data.value;
@@ -65,8 +66,11 @@ export default {
     const currentPage = ref(null);
     const currentPageSize = ref(null);
     const changePage = (next) => {
+      console.log(123)
       currentPage.value = next;
-      page.value = data.slice((currentPage.value - 1) * currentPageSize.value, currentPage.value * currentPageSize.value)
+      localStorage.setItem('currentPage',next);
+      console.log(dataFiltered.value.slice((currentPage.value - 1) * currentPageSize.value, currentPage.value * currentPageSize.value))
+      page.value = dataFiltered.value.slice((currentPage.value - 1) * currentPageSize.value, currentPage.value * currentPageSize.value)
     }
     const filterData = (filter) => {
       update(filter);
@@ -143,7 +147,7 @@ export default {
     }
 
     return {
-      page: computed(() => data.value.slice((currentPage.value - 1) * currentPageSize.value, currentPage.value * currentPageSize.value)),
+      page: computed(() => dataFiltered.value.slice((currentPage.value - 1) * currentPageSize.value, currentPage.value * currentPageSize.value)),
       currentPage,
       currentPageSize,
       changePage,
