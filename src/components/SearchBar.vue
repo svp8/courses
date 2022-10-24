@@ -1,7 +1,7 @@
 <template>
     <div class="search-bar">
         <div style="">
-            <input v-on:keyup.enter="onEnter" v-model="searchText" type="text" name="text" class="text"   required/>
+            <input v-on:keyup.enter="onEnter" v-model="searchText" type="text" name="text" class="text" required />
             <label for="text" class="text search-bar__label ">
                 <span class="content-name">
                     Поиск по каталогу
@@ -26,33 +26,39 @@ top: 14px;
 </template>
 
 <script>
-import {ref} from 'vue'
-export default{
-    props:['info'],
+import { ref, onBeforeMount } from 'vue'
+export default {
+    props: ['info'],
     emits: ['filter'],
-    setup(props, { emit }){
+    setup(props, { emit }) {
+        onBeforeMount(()=>{
+            searchText.value=localStorage.getItem('searchText')
+        })
         console.log(props.info);
-        const searchText=ref('')
-        const filteredData=ref([]);
-        const onEnter=()=>{
-            filteredData.value=[];
-            if(searchText.value!=''){
-                props.info.map((item)=>{
-                    
-                    if(item.title.toLowerCase().indexOf(searchText.value.toLowerCase().trim()) > -1){
+        const searchText = ref('')
+        const filteredData = ref([]);
+        const onEnter = () => {
+            filteredData.value = [];
+            if (searchText.value != '') {
+                props.info.map((item) => {
+
+                    if (item.title.toLowerCase().indexOf(searchText.value.toLowerCase().trim()) > -1) {
                         console.log(item.title)
                         filteredData.value.push(item);
                     }
                 })
-                emit('filter',filteredData.value);
+                emit('filter', filteredData.value);
             }
-            else emit('filter',props.info);
+            else emit('filter', props.info);
+            localStorage.setItem('searchText', searchText.value)
             console.log(filteredData.value)
-            
+
         }
 
-        return {searchText,
-        onEnter}
+        return {
+            searchText,
+            onEnter
+        }
     }
 }
 </script>
@@ -63,6 +69,7 @@ export default{
     border-radius: 4px;
     position: relative;
     overflow: hidden;
+
     &-icon {
         position: absolute;
         right: 40px;
@@ -90,13 +97,15 @@ export default{
             box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.12);
             outline: none;
         }
+
         &:active {
             background: #F0F4FC;
             box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.12);
             outline: none;
         }
+
         &:focus+.search-bar__label,
-        &:valid +.search-bar__label{
+        &:valid+.search-bar__label {
             width: 45px;
             height: 19px;
             left: 17px;

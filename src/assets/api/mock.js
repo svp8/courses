@@ -69,5 +69,19 @@ export const mock=[{
     "cost": 150000,
     "cost_currency": "₽",
     "series": "Бизнес навыки"
+} ,{
+    "id": 12,
+    "preview_img_path": "cover/pic6.png",
+    "title": "Прокрастинация: пока",
+    "cost": 150000,
+    "cost_currency": "₽",
+    "series": "Бизнес навыки"
+},{
+    "id": 11,
+    "preview_img_path": "cover/pic6.png",
+    "title": "Прокрастинация: привет",
+    "cost": 15000,
+    "cost_currency": "₽",
+    "series": "Бизнес навыки"
 }
 ]

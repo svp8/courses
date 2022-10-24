@@ -8,7 +8,7 @@
                 <h5>{{info.title}}</h5>
                 <h5>{{info.cost +" "+ info.cost_currency}}</h5>
             </div>
-            <button class="about">
+            <button class="about text-bold">
                 Подробнее
                 <img src="../assets/Vector60.png"/>
             </button>
@@ -93,19 +93,13 @@ export default{
                 display: flex;
                 align-items: center;
                 padding: 2px 10px 0px;
-                font-weight: 500;
-                font-size: 15px;
-                line-height: 19px;
                 color: #FFFFFF;
                 background-color: #0066B3;
                 border-radius: 2px;
             }
 
             h5 {
-                font-style: normal;
-                font-weight: 800;
-                font-size: 18px;
-                line-height: 25px;
+
                 text-transform: uppercase;
                 color: #FFFFFF;
 
@@ -114,11 +108,7 @@ export default{
         }
 
         .about {
-            font-family: Houschka Pro;
             position:absolute;
-            font-weight: 700;
-            font-size: 18px;
-            line-height: 28px;
             /* identical to box height, or 156% */
             background-color: transparent;
             border: 0;
