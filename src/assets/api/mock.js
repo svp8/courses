@@ -9,14 +9,14 @@ export const mock=[{
     "id": 8,
     "preview_img_path": "cover/pic9.png",
     "title": "Базовые принципы разработки решений с блокчейн. Продвинутый уровень",
-    "cost": 80000,
+    "cost": 0,
     "cost_currency": "₽",
     "series": "Программирование"
 }, {
     "id": 1,
     "preview_img_path": "cover/pic2.png",
-    "title": "Как добывают нефть",
-    "cost": 135000,
+    "title": "Как добывают нефть null",
+    "cost": 1305000,
     "cost_currency": "₽",
     "series": "Профессия"
 }, {
@@ -72,15 +72,23 @@ export const mock=[{
 } ,{
     "id": 12,
     "preview_img_path": "cover/pic6.png",
-    "title": "Прокрастинация: пока",
+    "title": "Прокрастинация: 1",
     "cost": 150000,
     "cost_currency": "₽",
     "series": "Бизнес навыки"
 },{
     "id": 11,
     "preview_img_path": "cover/pic6.png",
-    "title": "Прокрастинация: привет",
+    "title": "Прокрастинация: 3",
     "cost": 15000,
+    "cost_currency": "₽",
+    "series": "Бизнес навыки"
+},
+{
+    "id": 13,
+    "preview_img_path": "cover/pic6.png",
+    "title": "Прокрастинация: 2",
+    "cost": 17000,
     "cost_currency": "₽",
     "series": "Бизнес навыки"
 }

@@ -7,7 +7,7 @@
 <script>
 export default {
     props: {
-        num: Number,
+        num: [Number,String],
         active: Boolean,
         arrow: {
             default: 0
@@ -16,11 +16,6 @@ export default {
             default: false
         }
     },
-    setup(props) {
-        return {
-
-        }
-    }
 }
 </script>
 <style lang="scss" scoped>

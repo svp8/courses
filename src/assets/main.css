@@ -22,26 +22,6 @@
     font-weight: 600;
 }
 
-/* .text {
-    font-family: 'Houschka Pro';
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 28px;
-   
-    color: #000000;
-}
-
-.text-bold {
-    font-family: 'Houschka Pro';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 28px;
-    color: #000000;
-} */
-
-
 @media (min-width:1366px) {
     h1 {
         font-family: 'Futura PT';
@@ -85,14 +65,14 @@
 }
 
 
-@media only screen and (min-width: 760px) and (max-width:1365px) {
+@media only screen and (min-width: 768px) and (max-width:1365px) {
     .cards {
         grid-template-columns: 1fr 1fr;
     }
 
-    .card {
+    /* .card {
         width: 324px
-    }
+    } */
 
     h1 {
         font-family: 'Futura PT';
@@ -135,17 +115,17 @@
     }
 }
 
-@media (max-width: 759px) {
+@media (max-width: 767px) {
 
     .cards {
         display: grid;
         grid-template-columns: 1fr;
     }
 
-    .card {
+    /* .card {
         width: 336px;
         height: 300px;
-    }
+    } */
 
     h1 {
         font-family: 'Futura PT';

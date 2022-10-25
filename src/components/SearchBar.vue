@@ -1,14 +1,17 @@
 <template>
     <div class="search-bar">
-        <div style="">
+        <div style="flex:1;display:flex">
             <input v-on:keyup.enter="onEnter" v-model="searchText" type="text" name="text" class="text" required />
+
             <label for="text" class="text search-bar__label ">
                 <span class="content-name">
                     Поиск по каталогу
                 </span>
             </label>
         </div>
-
+        <div @click="onEnter" style="width:50px;cursor: pointer;z-index: 10;">
+        </div>
+        <!-- building search icon -->
         <div class="search-bar-icon">
             <img style="position: absolute;
 width: 13px;
@@ -31,27 +34,24 @@ export default {
     props: ['info'],
     emits: ['filter'],
     setup(props, { emit }) {
-        onBeforeMount(()=>{
-            searchText.value=localStorage.getItem('searchText')
+        onBeforeMount(() => {
+            searchText.value = localStorage.getItem('searchText');
         })
-        console.log(props.info);
         const searchText = ref('')
         const filteredData = ref([]);
         const onEnter = () => {
             filteredData.value = [];
             if (searchText.value != '') {
                 props.info.map((item) => {
-
                     if (item.title.toLowerCase().indexOf(searchText.value.toLowerCase().trim()) > -1) {
-                        console.log(item.title)
                         filteredData.value.push(item);
                     }
                 })
+                //send to app filtered array
                 emit('filter', filteredData.value);
             }
             else emit('filter', props.info);
             localStorage.setItem('searchText', searchText.value)
-            console.log(filteredData.value)
 
         }
 
@@ -69,38 +69,45 @@ export default {
     border-radius: 4px;
     position: relative;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
 
     &-icon {
         position: absolute;
         right: 40px;
-        top: 21px
+        top: 18px
     }
 
+    &:hover {
+        background: #E2E8F3;
+    }
 
+    &:focus {
+        background: #F0F4FC;
+        border: 1px solid #F0F4FC;
+        box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.12);
+        outline: none;
+    }
+
+    &:active {
+        background: #F0F4FC;
+        box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.12);
+        outline: none;
+    }
 
     input {
         padding: 15px 20px;
+        padding-right: 0;
         background: inherit;
         border: 0;
-        width: 100%;
+        flex: 1;
         border-radius: inherit;
         transition: background 300ms ease-out;
         border-radius: 4px;
-
-        &:hover {
-            background: #E2E8F3;
-        }
-
-        &:focus {
-            background: #F0F4FC;
-            border: 1px solid #F0F4FC;
-            box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.12);
-            outline: none;
-        }
+        outline: none;
 
         &:active {
-            background: #F0F4FC;
-            box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.12);
+
             outline: none;
         }
 
